@@ -3,7 +3,7 @@ import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
+import { googleLogout } from '@react-oauth/google';
 import memories from '../../images/memories.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
@@ -16,6 +16,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const logout = () => {
+    googleLogout();
     dispatch({ type: actionType.LOGOUT });
 
     navigate('/auth');
